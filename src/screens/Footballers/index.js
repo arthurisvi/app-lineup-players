@@ -4,6 +4,7 @@ import styles from "./style";
 
 export default function Footballers({ route }) {
   let position = route.params?.position;
+  const [lineup, setLineup] = useState([]);
 
   if (!position) {
     position = "Jogadores";
@@ -95,6 +96,12 @@ export default function Footballers({ route }) {
     ];
   }
 
+  function addPlayerToLineup(player) {
+    setLineup([...lineup, player]);
+
+    console.warn(lineup);
+  }
+
   return (
     <View>
       <View style={styles.containerPositionName}>
@@ -114,7 +121,12 @@ export default function Footballers({ route }) {
                   ></Image> */}
                   <Image source={require("../../../assets/BRA.png")}></Image>
                   <Text style={styles.textName}> {item.item.name}</Text>
-                  <TouchableOpacity style={styles.addButton}>
+                  <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={() => {
+                      addPlayerToLineup(item.item);
+                    }}
+                  >
                     <Text style={styles.textAddButton}>Escalar</Text>
                   </TouchableOpacity>
                 </View>
