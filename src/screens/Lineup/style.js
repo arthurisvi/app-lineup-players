@@ -22,8 +22,9 @@ const styles = StyleSheet.create({
     },
     textAddButton: {
         color: "white",
-        fontSize: 40,
+        fontSize: 30,
         fontWeight: "bold",
+        // textAlign: "center",
     },
     textMidfielder: {
         color: "white",
@@ -36,8 +37,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     footballerCircle: {
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
         borderRadius: 50,
         backgroundColor: "#699f5a",
         margin: 10,
@@ -45,6 +46,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 2, height: 3 },
         shadowOpacity: 0.5,
         shadowRadius: 5,
+        alignItems: "center",
+        justifyContent: "center",
     },
     forwardContainer: {
         flex: 1,

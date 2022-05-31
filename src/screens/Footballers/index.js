@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import styles from "./style";
 
 export default function Footballers({ route }) {
@@ -12,66 +12,79 @@ export default function Footballers({ route }) {
       {
         name: "Thibaut Courtois",
         position: "goalkeeper",
+        club: "BRA",
         id: 1,
       },
       {
         name: "Alisson",
         position: "goalkeeper",
+        club: "BRA",
         id: 2,
       },
       {
         name: "Ter Stegen",
         position: "goalkeeper",
+        club: "BRA",
         id: 3,
       },
       {
         name: "Donnarumma",
         position: "goalkeeper",
+        club: "BRA",
         id: 4,
       },
       {
-        name: "Donnarumma",
+        name: "Weverton",
         position: "goalkeeper",
+        club: "BRA",
         id: 5,
       },
       {
-        name: "Donnarumma",
+        name: "Jandrei",
         position: "goalkeeper",
+        club: "BRA",
         id: 6,
       },
       {
-        name: "Donnarumma",
+        name: "Kepa",
         position: "goalkeeper",
+        club: "BRA",
         id: 7,
       },
       {
-        name: "Donnarumma",
+        name: "João Paulo",
         position: "goalkeeper",
+        club: "BRA",
         id: 8,
       },
       {
-        name: "Donnarumma",
+        name: "Cássio",
         position: "goalkeeper",
+        club: "BRA",
         id: 9,
       },
       {
-        name: "Donnarumma",
+        name: "Hugo",
         position: "goalkeeper",
+        club: "BRA",
         id: 10,
       },
       {
-        name: "Donnarumma",
+        name: "Ederson",
         position: "goalkeeper",
+        club: "BRA",
         id: 11,
       },
       {
-        name: "Donnarumma",
+        name: "Daniel",
         position: "goalkeeper",
+        club: "BRA",
         id: 12,
       },
       {
-        name: "Donnarumma",
+        name: "Everson",
         position: "goalkeeper",
+        club: "BRA",
         id: 13,
       },
     ];
@@ -80,7 +93,7 @@ export default function Footballers({ route }) {
   return (
     <View>
       <View style={styles.containerPositionName}>
-        <Text>{position}</Text>
+        <Text style={styles.textPosition}>{position}</Text>
       </View>
       <View>
         <FlatList
@@ -89,9 +102,16 @@ export default function Footballers({ route }) {
             return (
               <View style={styles.playerContainer}>
                 <View style={styles.playerContent}>
-                  <Text>Clube</Text>
-                  <Text> {item.item.name}</Text>
-                  <Text>+</Text>
+                  {/* <Image
+                    source={{
+                      uri: "https://i.ibb.co/zPYV0Pw/BRA.png",
+                    }}
+                  ></Image> */}
+                  <Image source={require("../../../assets/BRA.png")}></Image>
+                  <Text style={styles.textName}> {item.item.name}</Text>
+                  <TouchableOpacity style={styles.addButton}>
+                    <Text style={styles.textAddButton}>Escalar</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             );
