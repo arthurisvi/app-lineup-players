@@ -130,7 +130,7 @@ export default function Lineup({ navigation }) {
               <TouchableOpacity
                 style={styles.addButton}
                 onPress={() => {
-                  positionDefine("Goleiros");
+                  positionDefine("goalkeeper");
                 }}
               >
                 <Text style={styles.textAddButton}>+</Text>

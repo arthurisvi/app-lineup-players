@@ -3,11 +3,16 @@ import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import styles from "./style";
 
 export default function Footballers({ route }) {
-  const { position } = route.params;
+  let position = route.params?.position;
+
+  if (!position) {
+    position = "Jogadores";
+  }
 
   let listPlayers = [];
 
-  if (position === "Goleiros") {
+  if (position === "goalkeeper") {
+    position = "Goleiros";
     listPlayers = [
       {
         name: "Thibaut Courtois",
