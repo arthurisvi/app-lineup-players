@@ -127,7 +127,7 @@ export default function Footballers({ route }) {
                       addPlayerToLineup(item.item);
                     }}
                   >
-                    <Text style={styles.textAddButton}>Escalar</Text>
+                    <Text style={styles.textAddButton}>Adicionar</Text>
                   </TouchableOpacity>
                 </View>
               </View>
