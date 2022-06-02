@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -9,13 +10,22 @@ import Lineup from "./src/screens/Lineup";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+function LogoHeader() {
+  return (
+    <Image
+      style={{ width: 50, height: 50 }}
+      source={require("./assets/logo-scc.png")}
+    />
+  );
+}
+
 function Tabs() {
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "#C7662B",
+          backgroundColor: "#1C1C1C",
           height: 60,
         },
       }}
@@ -40,9 +50,15 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
+          headerTitle: (props) => <LogoHeader {...props} />,
           title: "Manager SCC",
           headerStyle: {
-            backgroundColor: "#C7662B",
+            backgroundColor: "#1C1C1C",
+            height: 100,
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
           },
         }}
       >
