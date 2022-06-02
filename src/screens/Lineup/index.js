@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import styles from "./style";
+import { LineupContext } from "../../contexts/lineup";
 
 export default function Lineup({ navigation }) {
+  const [goalkeeper, setGoalkeeper] = useState(null);
+  const { lineup } = useContext(LineupContext);
+
   function positionDefine(position) {
     navigation.navigate("Footballers", {
       position: position,

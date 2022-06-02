@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import styles from "./style";
+import { LineupContext } from "../../contexts/lineup";
 
 export default function Footballers({ route }) {
   let position = route.params?.position;
   const [lineup, setLineup] = useState([]);
+
+  const { addPlayerToLineup } = useContext(LineupContext);
 
   if (!position) {
     position = "Jogadores";
@@ -94,12 +97,6 @@ export default function Footballers({ route }) {
         id: 13,
       },
     ];
-  }
-
-  function addPlayerToLineup(player) {
-    setLineup([...lineup, player]);
-
-    console.warn(lineup);
   }
 
   return (

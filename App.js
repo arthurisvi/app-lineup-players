@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./src/screens/Home";
 import Footballers from "./src/screens/Footballers";
 import Lineup from "./src/screens/Lineup";
+import LineupProvider from "./src/contexts/lineup";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -48,23 +49,25 @@ function Tabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerTitle: (props) => <LogoHeader {...props} />,
-          title: "Manager SCC",
-          headerStyle: {
-            backgroundColor: "#1C1C1C",
-            height: 100,
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
-      >
-        <Stack.Screen name="Main" component={Tabs} />
-        <Stack.Screen name="Footballers" component={Footballers} />
-      </Stack.Navigator>
+      <LineupProvider>
+        <Stack.Navigator
+          screenOptions={{
+            headerTitle: (props) => <LogoHeader {...props} />,
+            title: "Manager SCC",
+            headerStyle: {
+              backgroundColor: "#1C1C1C",
+              height: 100,
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        >
+          <Stack.Screen name="Main" component={Tabs} />
+          <Stack.Screen name="Footballers" component={Footballers} />
+        </Stack.Navigator>
+      </LineupProvider>
     </NavigationContainer>
   );
 }
