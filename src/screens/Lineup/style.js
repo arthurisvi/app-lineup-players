@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         alignItems: "center",
         justifyContent: "center",
+        elevation: 11,
     },
     forwardContainer: {
         flex: 1,

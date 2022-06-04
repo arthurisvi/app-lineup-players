@@ -4,7 +4,6 @@ import styles from "./style";
 import { LineupContext } from "../../contexts/lineup";
 
 export default function Lineup({ navigation }) {
-  const [goalkeeper, setGoalkeeper] = useState(null);
   const { lineup } = useContext(LineupContext);
 
   function positionDefine(position) {
@@ -12,6 +11,10 @@ export default function Lineup({ navigation }) {
       position: position,
     });
   }
+
+  let goalkeeper = lineup.find((player) => player.position === "goalkeeper");
+  let sides = lineup.filter((player) => player.position === "side");
+  let defenders = lineup.filter((player) => player.position === "defender");
 
   return (
     <View style={styles.container}>
@@ -87,59 +90,92 @@ export default function Lineup({ navigation }) {
           </View>
           <View style={styles.defenderContainer}>
             <View style={styles.sectionContainer}>
-              <View style={styles.footballerCircle}>
-                <TouchableOpacity
-                  style={styles.addButton}
-                  onPress={() => {
-                    positionDefine("side");
-                  }}
-                >
-                  <Text style={styles.textAddButton}>+</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.footballerCircle}>
-                <TouchableOpacity
-                  style={styles.addButton}
-                  onPress={() => {
-                    positionDefine("defender");
-                  }}
-                >
-                  <Text style={styles.textAddButton}>+</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.footballerCircle}>
-                <TouchableOpacity
-                  style={styles.addButton}
-                  onPress={() => {
-                    positionDefine("defender");
-                  }}
-                >
-                  <Text style={styles.textAddButton}>+</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.footballerCircle}>
-                <TouchableOpacity
-                  style={styles.addButton}
-                  onPress={() => {
-                    positionDefine("side");
-                  }}
-                >
-                  <Text style={styles.textAddButton}>+</Text>
-                </TouchableOpacity>
-              </View>
+              {sides.length > 0 ? (
+                <View>
+                  <Text>{sides[0].name}</Text>
+                </View>
+              ) : (
+                <View style={styles.footballerCircle}>
+                  <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={() => {
+                      positionDefine("side");
+                    }}
+                  >
+                    <Text style={styles.textAddButton}>+</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+
+              {defenders.length > 0 ? (
+                <View>
+                  <Text>{defenders[0].name}</Text>
+                </View>
+              ) : (
+                <View style={styles.footballerCircle}>
+                  <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={() => {
+                      positionDefine("defender");
+                    }}
+                  >
+                    <Text style={styles.textAddButton}>+</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+
+              {defenders.length > 1 ? (
+                <View>
+                  <Text>{defenders[1].name}</Text>
+                </View>
+              ) : (
+                <View style={styles.footballerCircle}>
+                  <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={() => {
+                      positionDefine("defender");
+                    }}
+                  >
+                    <Text style={styles.textAddButton}>+</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+
+              {sides.length > 1 ? (
+                <View>
+                  <Text>{sides[1].name}</Text>
+                </View>
+              ) : (
+                <View style={styles.footballerCircle}>
+                  <TouchableOpacity
+                    style={styles.addButton}
+                    onPress={() => {
+                      positionDefine("side");
+                    }}
+                  >
+                    <Text style={styles.textAddButton}>+</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
             </View>
           </View>
           <View style={styles.goalkeeperContainer}>
-            <View style={styles.footballerCircle}>
-              <TouchableOpacity
-                style={styles.addButton}
-                onPress={() => {
-                  positionDefine("goalkeeper");
-                }}
-              >
-                <Text style={styles.textAddButton}>+</Text>
-              </TouchableOpacity>
-            </View>
+            {goalkeeper ? (
+              <View>
+                <Text>{goalkeeper.name}</Text>
+              </View>
+            ) : (
+              <View style={styles.footballerCircle}>
+                <TouchableOpacity
+                  style={styles.addButton}
+                  onPress={() => {
+                    positionDefine("goalkeeper");
+                  }}
+                >
+                  <Text style={styles.textAddButton}>+</Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
         </View>
       </View>

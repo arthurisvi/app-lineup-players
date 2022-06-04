@@ -22,6 +22,15 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
     },
+    disableButton: {
+        width: 80,
+        height: 40,
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: "#A9A9A9",
+        alignItems: "center",
+        justifyContent: "center",
+    },
     addButton: {
         width: 80,
         height: 40,
@@ -31,9 +40,18 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    removeButton: {
+        width: 80,
+        height: 40,
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: "red",
+        alignItems: "center",
+        justifyContent: "center",
+    },
     textAddButton: {
         color: "#fff",
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: "bold",
     },
     textName: {
