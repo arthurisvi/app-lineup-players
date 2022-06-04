@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import styles from "./style";
 import { LineupContext } from "../../contexts/lineup";
-import { goalkeepers, sides, defenders } from "./list";
+import { goalkeepers, sides, defenders, forwards, midfielders } from "./list";
 
 export default function Footballers({ route }) {
   let position = route.params?.position;
@@ -23,10 +23,13 @@ export default function Footballers({ route }) {
     listPlayers = defenders;
   } else if (position === "midfielder") {
     position = "Meio-campistas";
+    listPlayers = midfielders;
   } else if (position === "forward") {
     position = "Atacantes";
+    listPlayers = forwards;
   } else {
     position = "Jogadores";
+    listPlayers = goalkeepers.concat(sides, defenders, midfielders);
   }
 
   let goalkeeper = lineup.find((player) => player.position === "goalkeeper");
@@ -71,7 +74,7 @@ export default function Footballers({ route }) {
                   ) : (
                     <TouchableOpacity
                       style={
-                        position == "Goleiros" && goalkeeper
+                        goalkeeper && item.item.position == "goalkeeper"
                           ? styles.disableButton
                           : styles.addButton
                       }

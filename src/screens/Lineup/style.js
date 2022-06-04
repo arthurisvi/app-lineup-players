@@ -50,6 +50,17 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         elevation: 11,
     },
+    footballer: {
+        width: "20%",
+        height: 80,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    footballerName: {
+        fontWeight: "bold",
+        fontSize: 12,
+        color: "#fff",
+    },
     forwardContainer: {
         flex: 1,
         marginTop: 60,

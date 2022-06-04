@@ -80,7 +80,7 @@ export const goalkeepers = [{
 ];
 
 export const sides = [{
-        name: "Victor Kizaru",
+        name: "Marcelo",
         position: "side",
         club: "BRA",
         id: 14,
@@ -104,5 +104,57 @@ export const defenders = [{
         position: "defender",
         club: "BRA",
         id: 16,
+    },
+];
+
+export const midfielders = [{
+        name: "Modric",
+        position: "midfielder",
+        club: "BRA",
+        id: 22,
+    },
+    {
+        name: "Casemiro",
+        position: "midfielder",
+        club: "BRA",
+        id: 23,
+    },
+    {
+        name: "Kroos",
+        position: "midfielder",
+        club: "BRA",
+        id: 24,
+    },
+    {
+        name: "Fabinho",
+        position: "midfielder",
+        club: "BRA",
+        id: 25,
+    },
+];
+
+export const forwards = [{
+        name: "Neymar",
+        position: "forward",
+        club: "BRA",
+        id: 18,
+    },
+    {
+        name: "Mbappe",
+        position: "forward",
+        club: "BRA",
+        id: 19,
+    },
+    {
+        name: "Cristiano Ronaldo",
+        position: "forward",
+        club: "BRA",
+        id: 20,
+    },
+    {
+        name: "Haaland",
+        position: "forward",
+        club: "BRA",
+        id: 21,
     },
 ];
