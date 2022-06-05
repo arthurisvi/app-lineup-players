@@ -55,12 +55,12 @@ export default function Footballers({ route }) {
             return (
               <View style={styles.playerContainer}>
                 <View style={styles.playerContent}>
-                  {/* <Image
+                  <Image
+                    style={{ width: 55, height: 55 }}
                     source={{
-                      uri: "https://i.ibb.co/zPYV0Pw/BRA.png",
+                      uri: item.item.image,
                     }}
-                  ></Image> */}
-                  <Image source={require("../../../assets/BRA.png")}></Image>
+                  ></Image>
                   <Text style={styles.textName}> {item.item.name}</Text>
                   {playerExistsInLineup(item.item.id) ? (
                     <TouchableOpacity
@@ -79,6 +79,8 @@ export default function Footballers({ route }) {
                           : styles.addButton
                       }
                       onPress={() => {
+                        // if (!goalkeeper && item.item.position == "goalkeeper") {
+                        // }
                         addPlayerToLineup(item.item);
                       }}
                     >

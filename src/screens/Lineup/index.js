@@ -27,11 +27,17 @@ export default function Lineup({ navigation }) {
               {forwards.length > 0 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(forwards[0].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: forwards[0].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>
                       {forwards[0].name}
                     </Text>
@@ -52,11 +58,17 @@ export default function Lineup({ navigation }) {
               {forwards.length > 1 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(forwards[1].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: forwards[1].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>
                       {forwards[1].name}
                     </Text>
@@ -78,11 +90,17 @@ export default function Lineup({ navigation }) {
               {forwards.length > 2 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(forwards[2].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: forwards[2].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>
                       {forwards[2].name}
                     </Text>
@@ -107,11 +125,17 @@ export default function Lineup({ navigation }) {
               {midfielders.length > 0 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(midfielders[0].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: midfielders[0].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>
                       {midfielders[0].name}
                     </Text>
@@ -133,11 +157,17 @@ export default function Lineup({ navigation }) {
               {midfielders.length > 1 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(midfielders[1].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: midfielders[1].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>
                       {midfielders[1].name}
                     </Text>
@@ -159,11 +189,19 @@ export default function Lineup({ navigation }) {
               {midfielders.length > 2 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(midfielders[2].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    {/* <View>
+                      </View> */}
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: midfielders[2].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>
                       {midfielders[2].name}
                     </Text>
@@ -188,11 +226,17 @@ export default function Lineup({ navigation }) {
               {sides.length > 0 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(sides[0].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: sides[0].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>{sides[0].name}</Text>
                   </TouchableOpacity>
                 </View>
@@ -212,11 +256,17 @@ export default function Lineup({ navigation }) {
               {defenders.length > 0 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(defenders[0].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: defenders[0].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>
                       {defenders[0].name}
                     </Text>
@@ -238,11 +288,17 @@ export default function Lineup({ navigation }) {
               {defenders.length > 1 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(defenders[1].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: defenders[1].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>
                       {defenders[1].name}
                     </Text>
@@ -264,11 +320,17 @@ export default function Lineup({ navigation }) {
               {sides.length > 1 ? (
                 <View style={styles.footballer}>
                   <TouchableOpacity
+                    style={styles.playerContainer}
                     onPress={() => {
                       removePlayerToLineup(sides[1].id);
                     }}
                   >
-                    <Image source={require("../../../assets/BRA.png")}></Image>
+                    <Image
+                      style={{ width: 55, height: 55 }}
+                      source={{
+                        uri: sides[1].image,
+                      }}
+                    ></Image>
                     <Text style={styles.footballerName}>{sides[1].name}</Text>
                   </TouchableOpacity>
                 </View>
@@ -290,11 +352,17 @@ export default function Lineup({ navigation }) {
             {goalkeeper ? (
               <View style={styles.footballer}>
                 <TouchableOpacity
+                  style={styles.playerContainer}
                   onPress={() => {
                     removePlayerToLineup(goalkeeper.id);
                   }}
                 >
-                  <Image source={require("../../../assets/BRA.png")}></Image>
+                  <Image
+                    style={{ width: 55, height: 55 }}
+                    source={{
+                      uri: goalkeeper.image,
+                    }}
+                  ></Image>
                   <Text style={styles.footballerName}>{goalkeeper.name}</Text>
                 </TouchableOpacity>
               </View>

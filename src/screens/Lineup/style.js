@@ -51,8 +51,15 @@ const styles = StyleSheet.create({
         elevation: 11,
     },
     footballer: {
+        display: "flex",
         width: "20%",
         height: 80,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    playerContainer: {
+        width: "100%",
+        display: "flex",
         alignItems: "center",
         justifyContent: "center",
     },
