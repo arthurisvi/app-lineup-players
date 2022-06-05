@@ -98,6 +98,14 @@ export const sides = [{
 
         id: 17,
     },
+    {
+        name: "Rafinha",
+        position: "side",
+        club: "BRA",
+        image: "https://i.ibb.co/zPYV0Pw/BRA.png",
+
+        id: 30,
+    },
 ];
 
 export const defenders = [{
@@ -114,6 +122,13 @@ export const defenders = [{
         club: "BRA",
         image: "https://i.ibb.co/SsLkjws/EQU.png",
         id: 16,
+    },
+    {
+        name: "Rudiger",
+        position: "defender",
+        club: "BRA",
+        image: "https://i.ibb.co/SsLkjws/EQU.png",
+        id: 31,
     },
 ];
 

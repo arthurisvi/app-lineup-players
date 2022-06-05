@@ -32,7 +32,17 @@ export default function Footballers({ route }) {
     listPlayers = goalkeepers.concat(sides, defenders, midfielders);
   }
 
-  let goalkeeper = lineup.find((player) => player.position === "goalkeeper");
+  const goalkeeper = lineup.find((player) => player.position === "goalkeeper");
+  const sidesLineup = lineup.filter((player) => player.position === "side");
+  const defendersLineup = lineup.filter(
+    (player) => player.position === "defender"
+  );
+  const forwardsLineup = lineup.filter(
+    (player) => player.position === "forward"
+  );
+  const midfieldersLineup = lineup.filter(
+    (player) => player.position === "midfielder"
+  );
 
   function playerExistsInLineup(playerId) {
     if (lineup.length > 0) {
@@ -74,14 +84,32 @@ export default function Footballers({ route }) {
                   ) : (
                     <TouchableOpacity
                       style={
-                        goalkeeper && item.item.position == "goalkeeper"
+                        (goalkeeper && item.item.position == "goalkeeper") ||
+                        (sidesLineup.length >= 2 &&
+                          item.item.position == "side") ||
+                        (midfieldersLineup.length >= 3 &&
+                          item.item.position == "midfielder") ||
+                        (forwardsLineup.length >= 3 &&
+                          item.item.position == "forward") ||
+                        (defendersLineup.length >= 2 &&
+                          item.item.position == "defender")
                           ? styles.disableButton
                           : styles.addButton
                       }
                       onPress={() => {
-                        // if (!goalkeeper && item.item.position == "goalkeeper") {
-                        // }
-                        addPlayerToLineup(item.item);
+                        if (
+                          (!goalkeeper && item.item.position == "goalkeeper") ||
+                          (!(defendersLineup.length >= 2) &&
+                            item.item.position == "defender") ||
+                          (!(midfieldersLineup.length >= 3) &&
+                            item.item.position == "midfielder") ||
+                          (!(sidesLineup.length >= 2) &&
+                            item.item.position == "side") ||
+                          (!(forwardsLineup.length >= 3) &&
+                            item.item.position == "forward")
+                        ) {
+                          addPlayerToLineup(item.item);
+                        }
                       }}
                     >
                       <Text style={styles.textAddButton}>ADICIONAR</Text>
