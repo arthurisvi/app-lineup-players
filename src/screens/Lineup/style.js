@@ -3,14 +3,13 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#6eaa5e",
     },
     lineupContainer: {
         margin: 20,
-        backgroundColor: "#6eaa5e",
         height: "70%",
     },
     sideLinesContainer: {
+        backgroundColor: "#6eaa5e",
         borderColor: "white",
         borderWidth: 5,
         height: "100%",
@@ -86,6 +85,50 @@ const styles = StyleSheet.create({
     },
     goalkeeperContainer: {
         alignItems: "center",
+    },
+    saveButtonActive: {
+        // opacity: 1,
+        marginTop: 30,
+        width: "100%",
+        height: "12%",
+        backgroundColor: "#3CB371",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 10,
+        borderRadius: 12,
+    },
+    saveButtonDisabled: {
+        // opacity: 0.5,
+        marginTop: 30,
+        width: "100%",
+        backgroundColor: "#D3D3D3",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 10,
+        borderRadius: 12,
+        height: "12%",
+    },
+    shareButtonActive: {
+        // opacity: 1,
+        marginTop: 10,
+        width: "100%",
+        backgroundColor: "#C7662B",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 10,
+        borderRadius: 12,
+        height: "12%",
+    },
+    buttonDisabled: {
+        // opacity: 0.5,
+        marginTop: 10,
+        width: "100%",
+        backgroundColor: "#D3D3D3",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 10,
+        borderRadius: 12,
+        height: "12%",
     },
 });
 
