@@ -13,9 +13,18 @@ function LineupProvider({ children }) {
     setLineup(lineup.filter((player) => player.id != playerId));
   }
 
+  function removeAllPlayers() {
+    setLineup([]);
+  }
+
   return (
     <LineupContext.Provider
-      value={{ lineup, addPlayerToLineup, removePlayerToLineup }}
+      value={{
+        lineup,
+        addPlayerToLineup,
+        removePlayerToLineup,
+        removeAllPlayers,
+      }}
     >
       {children}
     </LineupContext.Provider>

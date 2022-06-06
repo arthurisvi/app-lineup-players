@@ -130,6 +130,31 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         height: "12%",
     },
+    containerButtonDelete: {
+        flexWrap: "wrap",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-end",
+        width: "100%",
+        margin: 8,
+        paddingRight: 20,
+    },
+    buttonDelete: {
+        backgroundColor: "#C7662B",
+        width: 45,
+        height: 40,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 12,
+        shadowColor: "#171717",
+        shadowOffset: { width: 2, height: 3 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        elevation: 11,
+        borderColor: "white",
+        borderWidth: 1,
+    },
 });
 
 export default styles;

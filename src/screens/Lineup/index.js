@@ -6,7 +6,8 @@ import styles from "./style";
 import { LineupContext } from "../../contexts/lineup";
 
 export default function Lineup({ navigation }) {
-  const { lineup, removePlayerToLineup } = useContext(LineupContext);
+  const { lineup, removePlayerToLineup, removeAllPlayers } =
+    useContext(LineupContext);
 
   function positionDefine(position) {
     navigation.navigate("Footballers", {
@@ -362,35 +363,59 @@ export default function Lineup({ navigation }) {
               </View>
             </View>
             <View style={styles.goalkeeperContainer}>
-              {goalkeeper ? (
-                <View style={styles.footballer}>
-                  <TouchableOpacity
-                    style={styles.playerContainer}
-                    onPress={() => {
-                      removePlayerToLineup(goalkeeper.id);
-                    }}
-                  >
-                    <Image
-                      style={{ width: 55, height: 55 }}
-                      source={{
-                        uri: goalkeeper.image,
+              <View
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {goalkeeper ? (
+                  <View style={styles.footballer}>
+                    <TouchableOpacity
+                      style={styles.playerContainer}
+                      onPress={() => {
+                        removePlayerToLineup(goalkeeper.id);
                       }}
-                    ></Image>
-                    <Text style={styles.footballerName}>{goalkeeper.name}</Text>
-                  </TouchableOpacity>
-                </View>
-              ) : (
-                <View style={styles.footballerCircle}>
-                  <TouchableOpacity
-                    style={styles.addButton}
-                    onPress={() => {
-                      positionDefine("goalkeeper");
-                    }}
-                  >
-                    <Text style={styles.textAddButton}>+</Text>
-                  </TouchableOpacity>
-                </View>
-              )}
+                    >
+                      <Image
+                        style={{ width: 55, height: 55 }}
+                        source={{
+                          uri: goalkeeper.image,
+                        }}
+                      ></Image>
+                      <Text style={styles.footballerName}>
+                        {goalkeeper.name}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                ) : (
+                  <View style={styles.footballerCircle}>
+                    <TouchableOpacity
+                      style={styles.addButton}
+                      onPress={() => {
+                        positionDefine("goalkeeper");
+                      }}
+                    >
+                      <Text style={styles.textAddButton}>+</Text>
+                    </TouchableOpacity>
+                  </View>
+                )}
+              </View>
+              <View style={styles.containerButtonDelete}>
+                {lineup.length > 0 ? (
+                  <View style={styles.buttonDelete}>
+                    <TouchableOpacity onPress={removeAllPlayers}>
+                      <Image
+                        style={{ width: 25, height: 25 }}
+                        source={require("../../../assets/lixeira.png")}
+                      ></Image>
+                    </TouchableOpacity>
+                  </View>
+                ) : (
+                  <View style={{ width: 45, height: 40 }}></View>
+                )}
+              </View>
             </View>
           </View>
         </ViewShot>
