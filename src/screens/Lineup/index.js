@@ -1,19 +1,29 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect } from "react";
 import ViewShot from "react-native-view-shot";
 import * as Sharing from "expo-sharing";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "./style";
 import { LineupContext } from "../../contexts/lineup";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Lineup({ navigation }) {
-  const { lineup, removePlayerToLineup, removeAllPlayers } =
-    useContext(LineupContext);
+  const {
+    lineup,
+    removePlayerToLineup,
+    removeAllPlayers,
+    handleAsyncStorage,
+    getData,
+  } = useContext(LineupContext);
 
   function positionDefine(position) {
     navigation.navigate("Footballers", {
       position: position,
     });
   }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const viewShot = React.useRef();
 
@@ -22,7 +32,11 @@ export default function Lineup({ navigation }) {
       console.log("do something with ", uri);
       Sharing.shareAsync("file://" + uri);
     }),
-      (error) => console.error("Oops, snapshot failed", error);
+      (error) =>
+        alert(
+          "Oops, algo de errado aconteceu. Tente novamente mais tarde!",
+          error
+        );
   };
 
   let goalkeeper = lineup.find((player) => player.position === "goalkeeper");
@@ -420,6 +434,15 @@ export default function Lineup({ navigation }) {
           </View>
         </ViewShot>
         <TouchableOpacity
+          onPress={() => {
+            if (lineup.length === 11) {
+              handleAsyncStorage();
+            } else {
+              alert(
+                "Para salvar a escalação, você precisa ter 11 jogadores escalados."
+              );
+            }
+          }}
           style={
             lineup.length === 11
               ? styles.saveButtonActive
