@@ -44,6 +44,7 @@ function LineupProvider({ children }) {
         removeAllPlayers,
         handleAsyncStorage,
         getData,
+        setLineup,
       }}
     >
       {children}

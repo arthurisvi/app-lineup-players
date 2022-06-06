@@ -1,36 +1,90 @@
-import React, { useState, useContext } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import React, { useState, useContext, useEffect } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 import styles from "./style";
 import { LineupContext } from "../../contexts/lineup";
 import { goalkeepers, sides, defenders, forwards, midfielders } from "./list";
 
 export default function Footballers({ route }) {
   let position = route.params?.position;
+  // const [positionRoute, setPosition] = useState(position);
 
-  const { addPlayerToLineup, removePlayerToLineup, lineup } =
+  const { addPlayerToLineup, removePlayerToLineup, lineup, setLineup } =
     useContext(LineupContext);
+  const [searchPlayer, setSearchPlayer] = useState("");
+  const [listPlayers, setListPlayers] = useState(
+    goalkeepers.concat(sides, defenders, midfielders, forwards)
+  );
 
-  let listPlayers = [];
+  useEffect(() => {
+    if (searchPlayer === "") {
+      setListPlayers(
+        goalkeepers.concat(sides, defenders, midfielders, forwards)
+      );
+    } else {
+      setListPlayers(
+        goalkeepers
+          .concat(sides, defenders, midfielders, forwards)
+          .filter((item) => {
+            if (item.name.indexOf(searchPlayer) > -1) {
+              return true;
+            } else {
+              return false;
+            }
+          })
+      );
+    }
+  }, [searchPlayer]);
 
-  if (position === "goalkeeper") {
-    position = "Goleiros";
-    listPlayers = goalkeepers;
-  } else if (position === "side") {
-    position = "Laterais";
-    listPlayers = sides;
-  } else if (position === "defender") {
-    position = "Zagueiros";
-    listPlayers = defenders;
-  } else if (position === "midfielder") {
-    position = "Meio-campistas";
-    listPlayers = midfielders;
-  } else if (position === "forward") {
-    position = "Atacantes";
-    listPlayers = forwards;
-  } else {
-    position = "Jogadores";
-    listPlayers = goalkeepers.concat(sides, defenders, midfielders);
-  }
+  useEffect(() => {
+    if (position === "goalkeeper") {
+      position = "Goleiros";
+      setListPlayers(goalkeepers);
+    } else if (position === "side") {
+      position = "Laterais";
+      setListPlayers(sides);
+    } else if (position === "defender") {
+      position = "Zagueiros";
+      setListPlayers(defenders);
+    } else if (position === "midfielder") {
+      position = "Meio-campistas";
+      setListPlayers(midfielders);
+    } else if (position === "forward") {
+      position = "Atacantes";
+      setListPlayers(forwards);
+    } else {
+      (position = "Jogadores"),
+        setListPlayers(
+          goalkeepers.concat(sides, defenders, midfielders, forwards)
+        );
+    }
+  }, [position]);
+
+  // let listPlayers = [];
+
+  // else if (position === "side") {
+  //   position = "Laterais";
+  //   listPlayers = sides;
+  // } else if (position === "defender") {
+  //   position = "Zagueiros";
+  //   listPlayers = defenders;
+  // } else if (position === "midfielder") {
+  //   position = "Meio-campistas";
+  //   listPlayers = midfielders;
+  // } else if (position === "forward") {
+  //   position = "Atacantes";
+  //   listPlayers = forwards;
+  // }
+  // else {
+  //   position = "Jogadores";
+  //   listPlayers = goalkeepers.concat(sides, defenders, midfielders);
+  // }
 
   const goalkeeper = lineup.find((player) => player.position === "goalkeeper");
   const sidesLineup = lineup.filter((player) => player.position === "side");
@@ -54,6 +108,20 @@ export default function Footballers({ route }) {
     <View>
       <View style={styles.containerPositionName}>
         <Text style={styles.textPosition}>{position}</Text>
+        <View
+          style={{
+            marginTop: 15,
+            backgroundColor: "#DCDCDC",
+            width: "97%",
+            padding: 10,
+          }}
+        >
+          <TextInput
+            value={searchPlayer}
+            onChangeText={(t) => setSearchPlayer(t)}
+            placeholder="Pesquise por um jogador"
+          />
+        </View>
       </View>
       <View>
         <FlatList
