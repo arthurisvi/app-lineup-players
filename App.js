@@ -7,6 +7,7 @@ import Home from "./src/screens/Home";
 import Footballers from "./src/screens/Footballers";
 import Lineup from "./src/screens/Lineup";
 import LineupProvider from "./src/contexts/lineup";
+import { Entypo, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,24 +24,51 @@ function LogoHeader() {
 function Tabs() {
   return (
     <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: "#C7662B",
+      }}
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
           backgroundColor: "#1C1C1C",
-          height: 60,
+          height: 65,
+          paddingBottom: 10,
+          paddingTop: 5,
         },
       }}
     >
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <Entypo name="home" size={size} color={color} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Lineup"
         component={Lineup}
-        options={{ title: "Escalação" }}
+        options={{
+          title: "Escalação",
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons
+              name="soccer-field"
+              size={size}
+              color={color}
+            />
+          ),
+        }}
       />
       <Tab.Screen
         name="Footballers"
         component={Footballers}
-        options={{ title: "Jogadores" }}
+        options={{
+          title: "Jogadores",
+          tabBarIcon: ({ size, color }) => (
+            <Entypo name="users" size={size} color={color} />
+          ),
+        }}
       />
     </Tab.Navigator>
   );
