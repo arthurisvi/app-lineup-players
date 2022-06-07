@@ -13,7 +13,6 @@ import { goalkeepers, sides, defenders, forwards, midfielders } from "./list";
 
 export default function Footballers({ route }) {
   let position = route.params?.position;
-  // const [positionRoute, setPosition] = useState(position);
 
   const { addPlayerToLineup, removePlayerToLineup, lineup, setLineup } =
     useContext(LineupContext);
@@ -24,18 +23,39 @@ export default function Footballers({ route }) {
 
   useEffect(() => {
     if (searchPlayer === "") {
-      setListPlayers(
-        goalkeepers.concat(sides, defenders, midfielders, forwards)
-      );
+      if (position === "goalkeeper") {
+        setListPlayers(goalkeepers);
+      } else if (position === "side") {
+        setListPlayers(sides);
+      } else if (position === "midfielder") {
+        setListPlayers(midfielders);
+      } else if (position === "forward") {
+        setListPlayers(forwards);
+      } else {
+        setListPlayers(
+          goalkeepers.concat(sides, defenders, midfielders, forwards)
+        );
+      }
     } else {
       setListPlayers(
         goalkeepers
           .concat(sides, defenders, midfielders, forwards)
           .filter((item) => {
-            if (item.name.indexOf(searchPlayer) > -1) {
-              return true;
+            if (position) {
+              if (
+                item.name.indexOf(searchPlayer) > -1 &&
+                item.position === position
+              ) {
+                return true;
+              } else {
+                return false;
+              }
             } else {
-              return false;
+              if (item.name.indexOf(searchPlayer) > -1) {
+                return true;
+              } else {
+                return false;
+              }
             }
           })
       );
@@ -44,47 +64,37 @@ export default function Footballers({ route }) {
 
   useEffect(() => {
     if (position === "goalkeeper") {
-      position = "Goleiros";
       setListPlayers(goalkeepers);
     } else if (position === "side") {
-      position = "Laterais";
       setListPlayers(sides);
     } else if (position === "defender") {
-      position = "Zagueiros";
       setListPlayers(defenders);
     } else if (position === "midfielder") {
-      position = "Meio-campistas";
       setListPlayers(midfielders);
     } else if (position === "forward") {
-      position = "Atacantes";
       setListPlayers(forwards);
     } else {
-      (position = "Jogadores"),
-        setListPlayers(
-          goalkeepers.concat(sides, defenders, midfielders, forwards)
-        );
+      setListPlayers(
+        goalkeepers.concat(sides, defenders, midfielders, forwards)
+      );
     }
   }, [position]);
 
-  // let listPlayers = [];
-
-  // else if (position === "side") {
-  //   position = "Laterais";
-  //   listPlayers = sides;
-  // } else if (position === "defender") {
-  //   position = "Zagueiros";
-  //   listPlayers = defenders;
-  // } else if (position === "midfielder") {
-  //   position = "Meio-campistas";
-  //   listPlayers = midfielders;
-  // } else if (position === "forward") {
-  //   position = "Atacantes";
-  //   listPlayers = forwards;
-  // }
-  // else {
-  //   position = "Jogadores";
-  //   listPlayers = goalkeepers.concat(sides, defenders, midfielders);
-  // }
+  const getPositionName = () => {
+    if (position === "goalkeeper") {
+      return <Text style={styles.textPosition}>Goleiros</Text>;
+    } else if (position === "side") {
+      return <Text style={styles.textPosition}> Laterais</Text>;
+    } else if (position === "defender") {
+      return <Text style={styles.textPosition}>Zagueiros</Text>;
+    } else if (position === "midfielder") {
+      return <Text style={styles.textPosition}> Meio-Campistas</Text>;
+    } else if (position === "forward") {
+      return <Text style={styles.textPosition}>Atacantes</Text>;
+    } else {
+      return <Text style={styles.textPosition}>Jogadores</Text>;
+    }
+  };
 
   const goalkeeper = lineup.find((player) => player.position === "goalkeeper");
   const sidesLineup = lineup.filter((player) => player.position === "side");
@@ -105,9 +115,10 @@ export default function Footballers({ route }) {
   }
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <View style={styles.containerPositionName}>
-        <Text style={styles.textPosition}>{position}</Text>
+        {getPositionName()}
+        {/* <Text style={styles.textPosition}>{getPositionName}</Text> */}
         <View
           style={{
             marginTop: 15,
@@ -123,8 +134,9 @@ export default function Footballers({ route }) {
           />
         </View>
       </View>
-      <View>
+      <View style={{ flex: 1 }}>
         <FlatList
+          style={{ flex: 1 }}
           data={listPlayers}
           renderItem={(item) => {
             {
