@@ -1,8 +1,8 @@
 # Lineup Players
 Projeto em React Native a fim de simular uma escalação de Fantasy Game estilo Cartola FC/Rei do Pitaco.
 
-#### Confira
-* https://bityli.com/uvbtDU
+#### Confira em:
+* https://shre.ink/j9T
 
 ## Skills trabalhadas durante o desenvolvimento
 * React navigation
